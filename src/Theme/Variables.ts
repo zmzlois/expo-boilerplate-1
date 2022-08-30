@@ -17,6 +17,8 @@ export const Colors = {
   primary: '#E14032',
   success: '#28a745',
   error: '#dc3545',
+  background: '#FFFFFF',
+  iconBorderTabBar: 'black',
 }
 
 export const NavigationColors = {
