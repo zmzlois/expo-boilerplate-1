@@ -1,0 +1,37 @@
+---
+to: src/Components/<%= path %>/<%= name %>.tsx
+---
+import React from 'react'
+import { useTheme } from '@/Hooks'
+import { StyleSheet, Text, View } from 'react-native'
+
+interface Props {}
+
+const <%= name %>: React.FC<Props> = ({}) => {
+  const { Layout, Gutters, Colors, Fonts } = useTheme()
+
+  return (
+    <View
+      style={[
+        Layout.fill,
+        Layout.colCenter,
+        Gutters.regularHPadding,
+        Gutters.regularVPadding,
+        styles.containerStyle,
+        { backgroundColor: Colors.background },
+      ]}
+    >
+      <Text style={[Fonts.textRegular, { color: Colors.text }]}>
+        My component
+      </Text>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  containerStyle: {},
+})
+
+<%= name %>.defaultProps = {}
+
+export default <%= name %>
