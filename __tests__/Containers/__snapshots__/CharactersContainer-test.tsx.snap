@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CharactersContainer match the snapshot 1`] = `
+<RNCSafeAreaView
+  edges={
+    [
+      "bottom",
+      "left",
+      "right",
+      "top",
+    ]
+  }
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      {
+        "flexDirection": "column",
+        "justifyContent": "center",
+      },
+      {
+        "backgroundColor": "#ffffff",
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    data={
+      [
+        {
+          "created": "2017-11-04T18:48:46.250Z",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/1",
+            "https://rickandmortyapi.com/api/episode/2",
+          ],
+          "gender": "Male",
+          "id": 1,
+          "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+          "location": {
+            "name": "Earth",
+            "url": "https://rickandmortyapi.com/api/location/20",
+          },
+          "name": "Rick Sanchez",
+          "origin": {
+            "name": "Earth",
+            "url": "https://rickandmortyapi.com/api/location/1",
+          },
+          "species": "Human",
+          "status": "Alive",
+          "type": "",
+          "url": "https://rickandmortyapi.com/api/character/1",
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={[]}
+    testID="charactersList"
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "justifyContent": "center",
+              },
+              {
+                "flexGrow": 1,
+                "justifyContent": "space-between",
+              },
+            ]
+          }
+        >
+          <Text>
+            Rick Sanchez
+          </Text>
+          <View>
+            <Image
+              source={
+                {
+                  "uri": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+                }
+              }
+              style={
+                {
+                  "height": 66,
+                  "width": 100,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</RNCSafeAreaView>
+`;
