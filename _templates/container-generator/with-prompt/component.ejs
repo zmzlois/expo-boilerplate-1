@@ -1,0 +1,36 @@
+---
+to: src/Containers/<%= name %>/<%= name %>Container.tsx
+---
+import React from 'react'
+import { useTheme } from '@/Hooks'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import {
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native'
+
+const <%= name %>Container = () => {
+  const { Layout, Colors, Fonts } = useTheme()
+
+  return (
+    <SafeAreaView
+      style={[
+        Layout.fill,
+        Layout.colHCenter,
+        styles.globalContainer,
+        { backgroundColor: Colors.white },
+      ]}
+    >
+    <Text style={[Fonts.textRegular, { color: Colors.text }]}>
+      My container
+    </Text>
+    </SafeAreaView>
+  )
+}
+
+const styles = StyleSheet.create({
+  globalContainer: {}
+})
+
+export default <%= name %>Container
