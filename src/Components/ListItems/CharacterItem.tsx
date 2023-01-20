@@ -8,11 +8,11 @@ interface Props {
 }
 
 const CharacterItem: React.FC<Props> = ({ name, uri }) => {
-  const { Layout } = useTheme()
+  const { Layout, Colors, Fonts } = useTheme()
 
   return (
     <View style={[Layout.rowVCenter, Layout.scrollSpaceBetween]}>
-      <Text>{name}</Text>
+      <Text style={[Fonts.textRegular, { color: Colors.text }]}>{name}</Text>
       <View>
         <Image source={{ uri }} style={styles.image} />
       </View>

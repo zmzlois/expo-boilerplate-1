@@ -29,7 +29,7 @@ const CharactersContainer = () => {
         Layout.colHCenter,
         Gutters.regularHPadding,
         Gutters.regularVPadding,
-        { backgroundColor: Colors.white },
+        { backgroundColor: Colors.background },
       ]}
     >
       <FlatList
