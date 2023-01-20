@@ -66,8 +66,7 @@
       ".+\\.(png|jpg)$": "<rootDir>/jest/file-mock.js"
     },
     "setupFiles": [
-      "./jest/jest.setup.js",
-      "./jest/jest.useTheme.js"
+      "./jest/jest.setup.js"
     ],
     "transformIgnorePatterns": [
       "/node_modules/(?!@react-native|react-native)"
