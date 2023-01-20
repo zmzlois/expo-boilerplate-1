@@ -1,0 +1,28 @@
+---
+to: src/Navigators/<%= name %>Navigator.tsx
+---
+import React from 'react'
+import {
+  createStackNavigator,
+  StackNavigationOptions,
+} from '@react-navigation/stack'
+import { useHeader } from '@/Hooks'
+
+const Stack = createStackNavigator()
+
+const <%= name %>Navigator = () => {
+  const { headerStyle } = useHeader()
+
+  const screenOptions: StackNavigationOptions = {
+    headerTitle: () => <></>,
+    headerTitleAlign: 'center',
+    headerStyle,
+  }
+
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+    </Stack.Navigator>
+  )
+}
+
+export default <%= name %>Navigator
