@@ -10,8 +10,8 @@ module.exports = [
   {
     type: 'select',
     name: 'path',
-    message: "Select the component's path: ",
-    choices: folders
+    message: "Select the component's directory: ",
+    choices: folders.filter(f=>!f.includes('ts'))
   },
   {
     type: 'input',
