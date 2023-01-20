@@ -1,0 +1,101 @@
+---
+to: __tests__/Containers/<%= name %>Container-test.tsx
+---
+import React from 'react'
+import { render, cleanup, act, waitFor } from '@testing-library/react-native'
+import { PersistGate } from 'redux-persist/integration/react'
+import { Provider } from 'react-redux'
+import <%= name %>Container from '@/Containers/<%= name %>/<%= name %>Container'
+import configureStore from 'redux-mock-store'
+
+const initialState = {
+  theme: {
+    theme: 'default',
+    darkMode: null,
+  },
+}
+const mockStore = configureStore()
+let store = mockStore(initialState)
+
+try {
+  jest.mock('@/Services/modules/__myModule__', () => {
+    return {
+      __esModule: true,
+      useLazyFetch__myModule__Query: jest.fn(() => [
+        function fetchCharacters() {
+          return jest.fn(() => ({
+            data: {},
+          }))
+        },
+        {
+          data: {},
+          isSuccess: true,
+          isLoading: false,
+          error: false,
+        },
+        { lastArg: Symbol() },
+      ]),
+    }
+  })
+} catch(error) {
+  //do nothing
+}
+
+describe('<%= name %>Container', () => {
+  beforeEach(() => {})
+  afterEach(() => cleanup())
+
+  it('match the snapshot', async () => {
+    await act(async () => {
+      const page = await waitFor(() =>
+        render(
+          <Provider store={store}>
+            <<%= name %>Container />
+          </Provider>,
+          {
+            createNodeMock: element => {
+              if (element.type === PersistGate) {
+                return element.props.children
+              }
+              return null
+            },
+          },
+        ),
+      )
+
+      return new Promise(resolve => {
+        setTimeout(() => {
+          expect(page).toMatchSnapshot()
+          resolve()
+        }, 3000)
+      })
+    })
+  })
+
+  it('has a component by TestID', async () => {
+    await act(async () => {
+      const page = await waitFor(() =>
+        render(
+          <Provider store={store}>
+            <<%= name %>Container />
+          </Provider>,
+          {
+            createNodeMock: element => {
+              if (element.type === PersistGate) {
+                return element.props.children
+              }
+              return null
+            },
+          },
+        ),
+      )
+
+      return new Promise(resolve => {
+        setTimeout(() => {
+          expect(page.getAllByTestId('<%= name %>TestID')).not.toBeNull()
+          resolve()
+        }, 3000)
+      })
+    })
+  })
+})

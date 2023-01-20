@@ -2,7 +2,6 @@ import React from 'react'
 import { render, cleanup, act, waitFor } from '@testing-library/react-native'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
-// import { store } from '@/Store'
 import CharactersContainer from '@/Containers/Characters/CharactersContainer'
 import configureStore from 'redux-mock-store'
 
