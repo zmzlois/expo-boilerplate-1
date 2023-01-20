@@ -69,9 +69,7 @@ jest.mock('react-i18next', () => ({
   },
 }))
 
-// jest.mock('redux-persist/integration/react', () => ({
-//   PersistGate: (props: { children: any }) => props.children,
-// }))
+
 
 export const mockedNavigate = jest.fn()
 
@@ -95,3 +93,4 @@ jest.mock('@react-navigation/elements', () => {
   }
 })
 
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');

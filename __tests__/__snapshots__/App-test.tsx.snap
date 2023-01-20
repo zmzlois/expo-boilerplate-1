@@ -306,7 +306,7 @@ exports[`App main module should match the snapshot 1`] = `
                                         >
                                           <Image
                                             resizeMode="contain"
-                                            source={3}
+                                            source="test-file-stub"
                                             style={
                                               {
                                                 "height": "100%",

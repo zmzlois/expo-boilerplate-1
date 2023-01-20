@@ -2,8 +2,18 @@ import React from 'react'
 import { render, cleanup, act, waitFor } from '@testing-library/react-native'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
-import { store } from '@/Store'
 import ApplicationNavigator from '@/Navigators/Application'
+
+import configureStore from 'redux-mock-store'
+
+const initialState = {
+  theme: {
+    theme: 'default',
+    darkMode: null,
+  },
+}
+const mockStore = configureStore()
+let store = mockStore(initialState)
 
 describe('App main module', () => {
   beforeEach(() => {})
@@ -23,8 +33,8 @@ describe('App main module', () => {
               }
               return null
             },
-          }
-        )
+          },
+        ),
       )
 
       return new Promise(resolve => {
