@@ -5,6 +5,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react'
 import ApplicationNavigator from '@navigators/application'
 import './src/translations'
 import { persistor, store } from '@store'
+import { ExampleContainer } from '@containers'
 
 const App = () => (
   <Provider store={store}>
@@ -16,7 +17,7 @@ const App = () => (
      * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
      */}
     <PersistGate loading={null} persistor={persistor}>
-      <ApplicationNavigator />
+      <ExampleContainer />
     </PersistGate>
   </Provider>
 )
