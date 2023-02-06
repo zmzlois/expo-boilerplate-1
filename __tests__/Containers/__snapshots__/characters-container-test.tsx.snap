@@ -13,20 +13,23 @@ exports[`CharactersContainer match the snapshot 1`] = `
   style={
     [
       {
-        "flex": 1,
+        "backgroundColor": "#fff",
       },
       {
-        "flexDirection": "column",
+        "flexBasis": "0%",
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+      {
+        "paddingBottom": 16,
+        "paddingTop": 16,
+      },
+      {
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      },
+      {
         "justifyContent": "center",
-      },
-      {
-        "paddingHorizontal": 15,
-      },
-      {
-        "paddingVertical": 15,
-      },
-      {
-        "backgroundColor": "#ffffff",
       },
     ]
   }
@@ -87,16 +90,25 @@ exports[`CharactersContainer match the snapshot 1`] = `
             [
               {
                 "flexDirection": "row",
-                "justifyContent": "center",
               },
               {
-                "flexGrow": 1,
                 "justifyContent": "space-between",
+              },
+              {
+                "alignItems": "center",
               },
             ]
           }
         >
-          <Text>
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "400",
+                },
+              ]
+            }
+          >
             Rick Sanchez
           </Text>
           <View>
@@ -107,10 +119,14 @@ exports[`CharactersContainer match the snapshot 1`] = `
                 }
               }
               style={
-                {
-                  "height": 66,
-                  "width": 100,
-                }
+                [
+                  {
+                    "width": 64,
+                  },
+                  {
+                    "height": 64,
+                  },
+                ]
               }
             />
           </View>

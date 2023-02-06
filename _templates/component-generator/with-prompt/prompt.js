@@ -16,6 +16,6 @@ module.exports = [
   {
     type: 'input',
     name: 'name',
-    message: "Insert the component's name (CamelCase): ",
+    message: "Insert the component's name (kebab-case): ",
   },
 ];

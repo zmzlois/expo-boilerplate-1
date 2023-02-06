@@ -1,25 +1,25 @@
-import React from 'react'
-import { render, cleanup, act, waitFor } from '@testing-library/react-native'
-import { PersistGate } from 'redux-persist/integration/react'
-import { Provider } from 'react-redux'
-import ApplicationNavigator from '@/Navigators/Application'
+import React from "react";
+import { render, cleanup, act, waitFor } from "@testing-library/react-native";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
+import ApplicationNavigator from "@navigators/application";
 
-import configureStore from 'redux-mock-store'
+import configureStore from "redux-mock-store";
 
 const initialState = {
   theme: {
-    theme: 'default',
+    theme: "default",
     darkMode: null,
   },
-}
-const mockStore = configureStore()
-let store = mockStore(initialState)
+};
+const mockStore = configureStore();
+let store = mockStore(initialState);
 
-describe('App main module', () => {
-  beforeEach(() => {})
-  afterEach(() => cleanup())
+describe("App main module", () => {
+  beforeEach(() => {});
+  afterEach(() => cleanup());
 
-  it('should match the snapshot', async () => {
+  it("should match the snapshot", async () => {
     await act(async () => {
       const page = await waitFor(() =>
         render(
@@ -27,22 +27,22 @@ describe('App main module', () => {
             <ApplicationNavigator />
           </Provider>,
           {
-            createNodeMock: element => {
+            createNodeMock: (element) => {
               if (element.type === PersistGate) {
-                return element.props.children
+                return element.props.children;
               }
-              return null
+              return null;
             },
-          },
-        ),
-      )
+          }
+        )
+      );
 
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         setTimeout(() => {
-          expect(page).toMatchSnapshot()
-          resolve()
-        }, 3000)
-      })
-    })
-  })
-})
+          expect(page).toMatchSnapshot();
+          resolve();
+        }, 3000);
+      });
+    });
+  });
+});

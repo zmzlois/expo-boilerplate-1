@@ -1,5 +1,5 @@
 ---
-to: src/Navigators/<%= name %>Navigator.tsx
+to: src/navigators/<%= h.changeCase.lower(name) %>-navigator.tsx
 ---
 import React from 'react'
 import {
@@ -10,7 +10,7 @@ import { useHeader } from '@/Hooks'
 
 const Stack = createStackNavigator()
 
-const <%= name %>Navigator = () => {
+const <%= h.changeCase.pascal(name) %>Navigator = () => {
   const { headerStyle } = useHeader()
 
   const screenOptions: StackNavigationOptions = {
@@ -25,4 +25,4 @@ const <%= name %>Navigator = () => {
   )
 }
 
-export default <%= name %>Navigator
+export default <%= h.changeCase.pascal(name) %>Navigator

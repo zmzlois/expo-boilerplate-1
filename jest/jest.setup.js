@@ -1,47 +1,47 @@
-import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock'
-import 'react-native-gesture-handler/jestSetup'
+import mockAsyncStorage from "@react-native-async-storage/async-storage/jest/async-storage-mock";
+import "react-native-gesture-handler/jestSetup";
 
-jest.mock('react-native-reanimated', () =>
-  require('react-native-reanimated/mock')
-)
+jest.mock("react-native-reanimated", () =>
+  require("react-native-reanimated/mock")
+);
 
-global.__reanimatedWorkletInit = jest.fn()
+global.__reanimatedWorkletInit = jest.fn();
 
-jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage)
+jest.mock("@react-native-async-storage/async-storage", () => mockAsyncStorage);
 
-jest.mock('@reduxjs/toolkit/query/react', () => {
+jest.mock("@reduxjs/toolkit/query/react", () => {
   return {
     __esModule: true,
     BaseQueryFn: jest.fn(() => {
-      return {}
+      return {};
     }),
     FetchArgs: jest.fn(() => {
-      return {}
+      return {};
     }),
     createApi: jest.fn(() => {
-      return {}
+      return {};
     }),
     fetchBaseQuery: jest.fn(() => {
-      return {}
+      return {};
     }),
     FetchBaseQueryError: jest.fn(() => {
-      return {}
+      return {};
     }),
-  }
-})
+  };
+});
 
-jest.mock('@/Services/api', () => {
+jest.mock("@services/rest/rickandmortyapi/index", () => {
   return {
     __esModule: true,
-    api: {
+    rickAndMortyApi: {
       injectEndpoints: jest.fn(() => {
-        return {}
+        return {};
       }),
     },
-  }
-})
+  };
+});
 
-jest.mock('@/Store/index', () => {
+jest.mock("@store/index", () => {
   return {
     __esModule: true,
     persistor: {
@@ -53,44 +53,42 @@ jest.mock('@/Store/index', () => {
       subscribe: jest.fn(() => {}),
       dispatch: jest.fn(() => {}),
     },
-  }
-})
+  };
+});
 
 // from: https://react.i18next.com/misc/testing
-jest.mock('react-i18next', () => ({
+jest.mock("react-i18next", () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown
   useTranslation: () => {
     return {
-      t: str => str,
+      t: (str) => str,
       i18n: {
         changeLanguage: () => new Promise(() => {}),
       },
-    }
+    };
   },
-}))
+}));
 
+export const mockedNavigate = jest.fn();
 
-
-export const mockedNavigate = jest.fn()
-
-jest.mock('@react-navigation/native', () => {
-  const actualNav = jest.requireActual('@react-navigation/native')
+jest.mock("@react-navigation/native", () => {
+  const actualNav = jest.requireActual("@react-navigation/native");
   return {
     ...actualNav,
     useNavigation: () => ({
       navigate: mockedNavigate,
     }),
-  }
-})
+  };
+});
 
-jest.mock('@react-navigation/elements', () => {
-  const actualNav = jest.requireActual('@react-navigation/elements')
+jest.mock("@react-navigation/elements", () => {
+  const actualNav = jest.requireActual("@react-navigation/elements");
   return {
     ...actualNav,
     useHeaderHeight: () => ({
       headerHeight: 20,
     }),
-  }
-})
+  };
+});
 
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");

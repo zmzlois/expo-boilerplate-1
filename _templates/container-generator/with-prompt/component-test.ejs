@@ -1,11 +1,11 @@
 ---
-to: __tests__/Containers/<%= name %>Container-test.tsx
+to: __tests__/containers/<%= h.changeCase.lower(name) %>-container-test.tsx
 ---
 import React from 'react'
 import { render, cleanup, act, waitFor } from '@testing-library/react-native'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
-import <%= name %>Container from '@/Containers/<%= name %>/<%= name %>Container'
+import <%= h.changeCase.pascal(name) %>Container from '@/containers/<%= h.changeCase.lower(name) %>/<%= h.changeCase.pascal(name) %>-container'
 import configureStore from 'redux-mock-store'
 
 const initialState = {
@@ -18,7 +18,7 @@ const mockStore = configureStore()
 let store = mockStore(initialState)
 
 try {
-  jest.mock('@/Services/modules/__myModule__', () => {
+  jest.mock('@services/modules/__myModule__', () => {
     return {
       __esModule: true,
       useLazyFetch__myModule__Query: jest.fn(() => [
@@ -50,7 +50,7 @@ describe('<%= name %>Container', () => {
       const page = await waitFor(() =>
         render(
           <Provider store={store}>
-            <<%= name %>Container />
+            <<%= h.changeCase.pascal(name) %>Container />
           </Provider>,
           {
             createNodeMock: element => {
@@ -77,7 +77,7 @@ describe('<%= name %>Container', () => {
       const page = await waitFor(() =>
         render(
           <Provider store={store}>
-            <<%= name %>Container />
+            <<%= h.changeCase.pascal(name) %>Container />
           </Provider>,
           {
             createNodeMock: element => {
@@ -92,7 +92,7 @@ describe('<%= name %>Container', () => {
 
       return new Promise(resolve => {
         setTimeout(() => {
-          expect(page.getAllByTestId('<%= name %>TestID')).not.toBeNull()
+          expect(page.getAllByTestId('<%= h.changeCase.pascal(name) %>TestID')).not.toBeNull()
           resolve()
         }, 3000)
       })

@@ -6,6 +6,6 @@ module.exports = [
   {
     type: 'input',
     name: 'name',
-    message: "Insert the navigator's name (CamelCase): ",
+    message: "Insert the navigator's name (kebab-case): ",
   },
 ];

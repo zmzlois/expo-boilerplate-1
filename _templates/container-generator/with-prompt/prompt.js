@@ -6,6 +6,6 @@ module.exports = [
   {
     type: 'input',
     name: 'name',
-    message: "Insert the container's name (CamelCase): ",
+    message: "Insert the container's name (kebab-case): ",
   },
 ];

@@ -2,9 +2,9 @@ import "react-native-gesture-handler";
 import React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import { store, persistor } from "@/Store";
-import ApplicationNavigator from "@/Navigators/Application";
-import "./src/Translations";
+import ApplicationNavigator from "@navigators/application";
+import "./src/translations";
+import { persistor, store } from "@store";
 
 const App = () => (
   <Provider store={store}>

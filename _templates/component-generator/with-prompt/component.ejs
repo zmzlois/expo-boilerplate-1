@@ -1,38 +1,23 @@
 ---
-to: src/Components/<%= path %>/<%= name %>.tsx
+to: src/components/<%= h.changeCase.lower(path) %>/<%= h.changeCase.lower(name) %>.tsx
 ---
 import React from 'react'
-import { useTheme } from '@/Hooks'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 
 interface Props {}
 
-const <%= name %>: React.FC<Props> = ({}) => {
-  const { Layout, Gutters, Colors, Fonts } = useTheme()
-
+const <%= h.changeCase.pascal(name) %>: React.FC<Props> = ({}) => {
   return (
     <View
-      testID="<%= name %>TestID"
-      style={[
-        Layout.fill,
-        Layout.colCenter,
-        Gutters.regularHPadding,
-        Gutters.regularVPadding,
-        styles.containerStyle,
-        { backgroundColor: Colors.background },
-      ]}
+      testID="<%= h.changeCase.pascal(name) %>TestID"
     >
-      <Text style={[Fonts.textRegular, { color: Colors.text }]}>
+      <Text >
         My component
       </Text>
     </View>
   )
 }
 
-const styles = StyleSheet.create({
-  containerStyle: {},
-})
+<%= h.changeCase.pascal(name) %>.defaultProps = {}
 
-<%= name %>.defaultProps = {}
-
-export default <%= name %>
+export default <%= h.changeCase.pascal(name) %>
