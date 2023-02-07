@@ -1,18 +1,8 @@
-import { useRouter } from 'expo-router'
+import { useNavigator } from '@hooks'
 import { StatusBar } from 'expo-status-bar'
 import React, { useState } from 'react'
 import { useWindowDimensions } from 'react-native'
-import {
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native'
-
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 import { useNotes } from '../../context/notes'
 import { Button, ToggleButton } from '../../etc/button'
 
@@ -22,7 +12,7 @@ export default function Compose() {
   const [task, setTask] = useState<string | undefined>()
   const [priority, setPriority] = useState(0)
   const { width } = useWindowDimensions()
-  const router = useRouter()
+  const { router } = useNavigator()
   const handleAddTask = () => {
     addNote({ text: task, priority })
     router.back()

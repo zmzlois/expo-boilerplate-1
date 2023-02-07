@@ -11,6 +11,7 @@ plugins.push(
         '@': './app/*',
         '@etc': './etc/',
         '@context': './context/',
+        '@hooks': './hooks/',
       },
     },
   ],

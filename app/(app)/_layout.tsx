@@ -1,17 +1,18 @@
-import { Link, Stack, useRouter } from 'expo-router'
+import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { Platform, Pressable, Text } from 'react-native'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
-
 import { useAuth } from '../../context/auth'
 import { NotesProvider } from '../../context/notes'
+import { useNavigator } from '../../hooks'
 
 export const unstable_settings = {
   initialRouteName: 'index',
 }
 
 export default function AppLayout() {
-  const router = useRouter()
+  const { createStackNavigator, router } = useNavigator()
+  const Stack = createStackNavigator()
 
   return (
     <NotesProvider>
@@ -54,6 +55,7 @@ export default function AppLayout() {
 
 function SignOutButton() {
   const { signOut } = useAuth()
+  const { Link } = useNavigator()
 
   return (
     <Link
@@ -88,6 +90,8 @@ function SignOutButton() {
 }
 
 function DismissComposeButton() {
+  const { Link } = useNavigator()
+
   return (
     <Link href="..">
       <Text

@@ -5,5 +5,6 @@ System.config({
     '@app': './app/*',
     '@etc': './etc/*',
     '@context': './context/*',
+    '@hooks': './hooks/*',
   },
 })

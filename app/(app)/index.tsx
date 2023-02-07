@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from '@bacons/react-views'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
-import { Link, useSearchParams } from 'expo-router'
+import { useNavigator } from '@hooks'
 import React, { useMemo } from 'react'
 import {
   ActivityIndicator,
@@ -42,6 +42,7 @@ function Index() {
 }
 
 function useQueriedNotes() {
+  const { useSearchParams } = useNavigator()
   const notes = useNotes()
   const { q } = useSearchParams()
 
@@ -62,6 +63,8 @@ function NotesList() {
   const { width } = useWindowDimensions()
   const innerWindow = width - 48
   const insets = useSafeAreaInsets()
+  const { Link } = useNavigator()
+
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
@@ -166,6 +169,7 @@ function NotesList() {
 
 function Footer() {
   const { left, bottom } = useSafeAreaInsets()
+  const { Link } = useNavigator()
 
   return (
     <View
@@ -221,6 +225,7 @@ function Footer() {
 }
 
 function ListEmptyComponent() {
+  const { useSearchParams } = useNavigator()
   const { q } = useSearchParams()
 
   const message = React.useMemo(() => {
@@ -235,7 +240,7 @@ function ListEmptyComponent() {
       //   alignItems: 'center',
       //   backgroundColor: 'red',
       // }}
-      className="flex-1 justify-center items-center bg-red-800"
+      className="flex-1 justify-center items-center"
     >
       <Text style={{ fontSize: 16, textAlign: 'center' }}>{message}</Text>
     </View>

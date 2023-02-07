@@ -1,19 +1,21 @@
-import { Stack, useRouter, useSearchParams } from "expo-router";
-import { Text, StyleSheet, View } from "react-native";
-import { useNotes } from "../../../context/notes";
-import { Button } from "../../../etc/button";
+import React from 'react'
+import { useNavigator } from '@hooks'
+import { Text, StyleSheet, View } from 'react-native'
+import { useNotes } from '../../../context/notes'
+import { Button } from '../../../etc/button'
 
 export default function Note() {
-  const { note } = useSearchParams();
-  const data = useNotes();
-  const router = useRouter();
+  const { router, createStackNavigator, useSearchParams } = useNavigator()
+  const { note } = useSearchParams()
+  const data = useNotes()
+  const Stack = createStackNavigator()
 
-  const selected = data.notes?.find((item) => item.id === note);
+  const selected = data.notes?.find(item => item.id === note)
 
   if (!selected) {
     return (
       <>
-        <Stack.Screen options={{ title: "Not Found!" }} />
+        <Stack.Screen options={{ title: 'Not Found!' }} />
         <View style={styles.container}>
           <View style={styles.main}>
             <Text style={{ fontSize: 24 }}>
@@ -22,7 +24,7 @@ export default function Note() {
           </View>
         </View>
       </>
-    );
+    )
   }
 
   return (
@@ -33,23 +35,23 @@ export default function Note() {
           <Item title="Note">{selected.text}</Item>
           <Item title="Created">{selected.date}</Item>
           <Item title="Priority">
-            {["Low", "Medium", "High"][selected.priority ?? 0]}
+            {['Low', 'Medium', 'High'][selected.priority ?? 0]}
           </Item>
 
           <Button
             style={{ marginTop: 16 }}
             onPress={() => {
-              data.deleteNote(selected.id);
-              router.back();
+              data.deleteNote(selected.id)
+              router.back()
             }}
-            buttonStyle={{ backgroundColor: "crimson" }}
+            buttonStyle={{ backgroundColor: 'crimson' }}
           >
             Delete
           </Button>
         </View>
       </View>
     </>
-  );
+  )
 }
 
 function Item({ title, children }) {
@@ -58,24 +60,24 @@ function Item({ title, children }) {
       <Text style={styles.title}>{title}</Text>
       <Text style={{ fontSize: 16 }}>{children}</Text>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   title: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 36,
     marginBottom: 8,
   },
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     padding: 24,
   },
   main: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     maxWidth: 960,
-    marginHorizontal: "auto",
+    marginHorizontal: 'auto',
   },
-});
+})
