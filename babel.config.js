@@ -1,36 +1,30 @@
-const presets = ["module:metro-react-native-babel-preset"];
-const plugins = [];
+const presets = ['module:babel-preset-expo']
+const plugins = []
 
 plugins.push(
   [
-    "module-resolver",
+    'module-resolver',
     {
-      root: ["./src"],
-      extensions: [".js", ".json"],
+      root: ['./'],
+      extensions: ['.js', '.json'],
       alias: {
-        "@": "./src/*",
-        "@store": "./src/store/",
-        "@services": "./src/services/",
-        "@config": "./src/config/",
-        "@core": "./src/core/",
-        "@components": "./src/components/",
-        "@containers": "./src/containers/",
-        "@assets": "./src/assets/",
-        "@store": "./src/store/",
-        "@hooks": "./src/hooks/",
-        "@navigators": "./src/navigators/",
-        "@theme": "./src/theme/",
+        '@': './app/*',
+        '@etc': './etc/',
+        '@context': './context/',
       },
     },
   ],
-  "react-native-reanimated/plugin"
-);
-plugins.push("nativewind/babel");
+  'react-native-reanimated/plugin',
+)
 
-module.exports = (api) => {
-  api.cache(true);
+plugins.push(require.resolve('expo-router/babel'))
+
+presets.push('nativewind/babel')
+
+module.exports = api => {
+  api.cache(true)
   return {
     presets,
     plugins,
-  };
-};
+  }
+}
