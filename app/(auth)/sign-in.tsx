@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { Button } from '@etc/button'
+import { Button } from '@ui/button'
 import { useAuth } from '@context/auth'
 
 export default function SignIn() {

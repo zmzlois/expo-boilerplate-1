@@ -54,7 +54,7 @@ function useQueriedNotes() {
         }
         return item.text.toLowerCase().includes(q.toLowerCase())
       }),
-    [q, notes.notes],
+    [q, notes.notes]
   )
 }
 

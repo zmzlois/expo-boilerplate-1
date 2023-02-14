@@ -3,8 +3,12 @@
 System.config({
   paths: {
     '@app': './app/*',
-    '@etc': './etc/*',
+    '@ui': './ui/*',
     '@context': './context/*',
     '@hooks': './hooks/*',
+    '@config': './config/*',
+    '@services': './services/*',
+    '@store': './store/*',
+    '@utils': './utils/*',
   },
 })

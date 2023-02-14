@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigator } from '@hooks'
 import { Text, StyleSheet, View } from 'react-native'
 import { useNotes } from '../../../context/notes'
-import { Button } from '../../../etc/button'
+import { Button } from '../../../ui/button'
 
 export default function Note() {
   const { router, createStackNavigator, useSearchParams } = useNavigator()

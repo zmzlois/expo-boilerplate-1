@@ -3,6 +3,7 @@ import {
   Stack,
   useRouter,
   useSearchParams as ExpoRouterUseSearchParams,
+  Tabs,
 } from 'expo-router'
 import { Href } from 'expo-router/build/link/href'
 
@@ -26,6 +27,8 @@ const createLink = () => ExpoRouterLink
 export default function () {
   const createStackNavigator = () => createGenericStack(Stack)
 
+  const createTabNavigator = () => createGenericStack(Tabs)
+
   const useSearchParams = createGenericFunction(ExpoRouterUseSearchParams)
 
   const router: Router = useRouter()
@@ -34,6 +37,7 @@ export default function () {
 
   return {
     createStackNavigator,
+    createTabNavigator,
     useSearchParams,
     router,
     Link,

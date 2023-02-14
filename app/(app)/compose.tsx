@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import { useNotes } from '../../context/notes'
-import { Button, ToggleButton } from '../../etc/button'
+import { Button, ToggleButton } from '../../ui/button'
 
 export default function Compose() {
   const { addNote } = useNotes()

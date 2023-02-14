@@ -1,68 +1,68 @@
-import { useRouter, useSegments } from "expo-router";
-import React from "react";
-import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import { useRouter, useSegments } from 'expo-router'
+import React from 'react'
+import { useAsyncStorage } from '@react-native-async-storage/async-storage'
 
-const AuthContext = React.createContext(null);
+const AuthContext = React.createContext(null)
 
 export function useAuth() {
-  return React.useContext(AuthContext);
+  return React.useContext(AuthContext)
 }
 
 function useProtectedRoute(user) {
-  const rootSegment = useSegments()[0];
-  const router = useRouter();
+  const rootSegment = useSegments()[0]
+  const router = useRouter()
 
   React.useEffect(() => {
     if (user === undefined) {
-      return;
+      return
     }
 
     if (
       // If the user is not signed in and the initial segment is not anything in the auth group.
       !user &&
-      rootSegment !== "(auth)"
+      rootSegment !== '(auth)'
     ) {
       // Redirect to the sign-in page.
-      router.replace("/sign-in");
-    } else if (user && rootSegment !== "(app)") {
+      router.replace('/sign-in')
+    } else if (user && rootSegment !== '(app)') {
       // Redirect away from the sign-in page.
-      router.replace("/");
+      router.replace('/')
     }
-  }, [user, rootSegment]);
+  }, [user, rootSegment])
 }
 
 export function Provider(props) {
-  const { getItem, setItem, removeItem } = useAsyncStorage("USER");
-  const [user, setAuth] = React.useState(undefined);
+  const { getItem, setItem, removeItem } = useAsyncStorage('USER')
+  const [user, setAuth] = React.useState(undefined)
 
   React.useEffect(() => {
-    getItem().then((json) => {
-      console.log("json", json);
+    getItem().then(json => {
+      console.log('json', json)
       if (json != null) {
-        setAuth(JSON.parse(json));
+        setAuth(JSON.parse(json))
       } else {
-        setAuth(null);
+        setAuth(null)
       }
-    });
-  }, []);
+    })
+  }, [])
 
-  useProtectedRoute(user);
+  useProtectedRoute(user)
 
   return (
     <AuthContext.Provider
       value={{
         signIn: () => {
-          setAuth({});
-          setItem(JSON.stringify({}));
+          setAuth({})
+          setItem(JSON.stringify({}))
         },
         signOut: () => {
-          setAuth(null);
-          removeItem();
+          setAuth(null)
+          removeItem()
         },
         user,
       }}
     >
       {props.children}
     </AuthContext.Provider>
-  );
+  )
 }

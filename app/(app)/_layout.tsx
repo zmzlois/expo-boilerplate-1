@@ -1,6 +1,6 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { Platform, Pressable, Text } from 'react-native'
+import { Pressable, Text } from 'react-native'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { useAuth } from '../../context/auth'
 import { NotesProvider } from '../../context/notes'
@@ -11,44 +11,49 @@ export const unstable_settings = {
 }
 
 export default function AppLayout() {
-  const { createStackNavigator, router } = useNavigator()
-  const Stack = createStackNavigator()
+  const { createTabNavigator } = useNavigator()
+  const Tabs = createTabNavigator()
 
   return (
     <NotesProvider>
       <StatusBar style="auto" />
-
-      <Stack
+      <Tabs
         screenOptions={{
           headerRight: SignOutButton,
         }}
       >
-        <Stack.Screen
-          name="index"
+        <Tabs.Screen
           options={{
-            title: 'Notes',
-            headerLargeTitle: true,
-            headerSearchBarOptions: {
-              onChangeText: event => {
-                // Update the query params to match the search query.
-                router.setParams({
-                  q: event.nativeEvent.text,
-                })
+            href: {
+              pathname: '/index',
+              params: {
+                foo: 'bar',
               },
             },
+            title: 'Notes',
           }}
+          name="index"
         />
-        <Stack.Screen
-          name="compose"
+        <Tabs.Screen
           options={{
-            title: 'Create a new note',
-            presentation: 'modal',
-            headerRight: Platform.select({
-              ios: DismissComposeButton,
-            }),
+            href: {
+              pathname: '/compose',
+              params: {
+                foo: 'bar',
+              },
+            },
+            title: 'Create',
+          }}
+          name="compose"
+        />
+        <Tabs.Screen
+          name="note/[note]"
+          options={{
+            href: null,
+            title: 'Notes',
           }}
         />
-      </Stack>
+      </Tabs>
     </NotesProvider>
   )
 }

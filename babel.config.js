@@ -9,13 +9,17 @@ plugins.push(
       extensions: ['.js', '.json'],
       alias: {
         '@': './app/*',
-        '@etc': './etc/',
+        '@ui': './ui/',
         '@context': './context/',
         '@hooks': './hooks/',
+        '@config': './config/',
+        '@services': './services/',
+        '@store': './store/',
+        '@utils': './utils/',
       },
     },
   ],
-  'react-native-reanimated/plugin',
+  'react-native-reanimated/plugin'
 )
 
 plugins.push(require.resolve('expo-router/babel'))

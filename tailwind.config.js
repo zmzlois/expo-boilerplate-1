@@ -5,7 +5,7 @@ module.exports = {
   content: [
     './app.tsx',
     './app/**/*.{js,jsx,ts,tsx}',
-    './etc/**/*.{js,jsx,ts,tsx}',
+    './ui/**/*.{js,jsx,ts,tsx}',
     './context/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
